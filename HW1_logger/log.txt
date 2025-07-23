@@ -1,0 +1,4 @@
+My first message to log file
+My fourth message to log file
+My third message to log file
+My second message to log file
