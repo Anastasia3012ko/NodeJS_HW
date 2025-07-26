@@ -2,8 +2,8 @@ const fs = require('fs').promises
 
 async function logMessage (message) {
     try {
-       const logMessage = `${message}\n`
-       await fs.appendFile('log.txt', logMessage) 
+       const logEntry = `${message}\n`
+       await fs.appendFile('log.txt', logEntry) 
        console.log('Message recorded in file')
     }catch(error) {
         console.error('Error writing to file: ', error)
