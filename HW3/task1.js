@@ -9,11 +9,11 @@ fs.mkdir(dirPath, error => {
         return
     }
     console.log('Folder "myFolder" created')
-})
-fs.rmdir(dirPath, error => {
+    fs.rmdir(dirPath, error => {
     if(error) {
         console.error('Error: ', error)
         return
     }
     console.log('Folder "myFolder" deleted')
+})
 })
