@@ -10,7 +10,7 @@ fs.writeFile(fileName, 'My homework 4 task2!!!!', 'utf-8', (error)=>{
         return;
     }
     console.log('Data written to the file successfully');
-    fs.readFile(fileName, 'utf-8', (data, error)=>{
+    fs.readFile(fileName, 'utf-8', (error, data)=>{
         if(error) {
         console.log('Error reading file', error);
         return;
