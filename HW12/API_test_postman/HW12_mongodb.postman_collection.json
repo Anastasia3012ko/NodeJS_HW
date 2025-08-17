@@ -1,0 +1,114 @@
+{
+	"info": {
+		"_postman_id": "cfdd8786-71fd-4e35-a9a5-3a7a2ef10ec7",
+		"name": "HW12_mongodb",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47558485",
+		"_collection_link": "https://anastasia301284-1329316.postman.co/workspace/70e32787-2a2a-47d9-b4ff-7abbd9718983/collection/47558485-cfdd8786-71fd-4e35-a9a5-3a7a2ef10ec7?action=share&source=collection_link&creator=47558485"
+	},
+	"item": [
+		{
+			"name": "getHomapage",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "createProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cucumber\": \"banane\",\r\n    \"price\": \"3,99\",\r\n    \"description\": \"vegitable\"\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": "**POST** `/products`\n\n### Описание\n\nСоздаёт новый продукт в базе данных.\n\n### Тело запроса (JSON)\n\n```\n{\n  \"name\": \"Ноутбук\",\n  \"price\": 1500,\n  \"description\": \"Игровой ноутбук\"\n}\n\n ```\n\n### Успешный ответ (201)\n\n```\n{\n  \"_id\": \"64f2cbd4b1f7a123456789\",\n  \"name\": \"Ноутбук\",\n  \"price\": 1500,\n  \"description\": \"Игровой ноутбук\"\n}\n\n ```\n\n### Ошибки\n\n- **400** – если не переданы `name`, `price` или `description`\n    \n\n```\n{ \"error\": \"Product name, price and description are required\" }\n\n ```\n\n- **500** – ошибка сервера\n    \n\n```\n{ \"error\": \"Failed to create product\" }\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": "**GET** `/products`\n\n### Описание\n\nВозвращает список всех продуктов.\n\n### Успешный ответ (200)\n\n```\n[\n  {\n    \"_id\": \"64f2cbd4b1f7a123456789\",\n    \"name\": \"Ноутбук\",\n    \"price\": 1500,\n    \"description\": \"Игровой ноутбук\"\n  },\n  {\n    \"_id\": \"64f2cbd4b1f7a123456790\",\n    \"name\": \"Телефон\",\n    \"price\": 800,\n    \"description\": \"Смартфон с OLED экраном\"\n  }\n]\n\n ```\n\n### Ошибки\n\n- **500** – ошибка сервера\n    \n\n```\n{ \"error\": \"Failed to fetch products\" }\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "getProductById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/689e336bd05e417a338b0181",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"689e336bd05e417a338b0181"
+					]
+				},
+				"description": "**GET** `/products/:id`\n\n### Параметры\n\n- `id` (string, обязательный) – MongoDB ObjectId\n    \n\n### Пример запроса\n\n`GET /products/64f2cbd4b1f7a123456789`\n\n### Успешный ответ (200)\n\n```\n{\n  \"_id\": \"64f2cbd4b1f7a123456789\",\n  \"name\": \"Ноутбук\",\n  \"price\": 1500,\n  \"description\": \"Игровой ноутбук\"\n}\n\n ```\n\n### Ошибки\n\n- **400** – неверный ObjectId\n    \n\n```\n{ \"error\": \"Invalid product ID\" }\n\n ```\n\n- **404** – продукт не найден\n    \n\n```\n{ \"error\": \"Product not found\" }\n\n ```\n\n- **500** – ошибка сервера\n    \n\n```\n{ \"error\": \"Failed to fetch product by id\" }\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "updateProductById",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"description": "**PUT** `/products/:id`\n\n### Параметры\n\n- `id` (string, обязательный) – MongoDB ObjectId\n    \n\n### Тело запроса (JSON)\n\nМожно передавать одно или несколько полей:\n\n```\n{\n  \"price\": 2000,\n  \"description\": \"Обновлённый ноутбук\"\n}\n\n ```\n\n### Успешный ответ (200)\n\n```\n{\n  \"_id\": \"64f2cbd4b1f7a123456789\",\n  \"name\": \"Ноутбук\",\n  \"price\": 2000,\n  \"description\": \"Обновлённый ноутбук\"\n}\n\n ```\n\n### Ошибки\n\n- **400** – неверный ObjectId или нет данных для обновления\n    \n\n```\n{ \"error\": \"Invalid product ID\" }\n\n ```\n\n```\n{ \"error\": \"No fields provided for update\" }\n\n ```\n\n- **404** – продукт не найден\n    \n\n```\n{ \"error\": \"Product not found\" }\n\n ```\n\n- **500** – ошибка сервера\n    \n\n```\n{ \"error\": \"Failed to update product\" }\n\n ```"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProductById",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"cucumber\": \"banane\",\r\n    \"price\": \"3,99\",\r\n    \"description\": \"vegitable\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": "**DELETE** `/products/:id`\n\n### Параметры\n\n- `id` (string, обязательный) – MongoDB ObjectId\n    \n\n### Пример запроса\n\n`DELETE /products/64f2cbd4b1f7a123456789`\n\n### Успешный ответ (200)\n\n```\n{ \"message\": \"Product deleted successfully\" }\n\n ```\n\n### Ошибки\n\n- **400** – неверный ObjectId\n    \n\n```\n{ \"error\": \"Invalid product ID\" }\n\n ```\n\n- **404** – продукт не найден\n    \n\n```\n{ \"error\": \"Product not found\" }\n\n ```\n\n- **500** – ошибка сервера\n    \n\n```\n{ \"error\": \"Failed to delete product\" }\n\n ```"
+			},
+			"response": []
+		}
+	]
+}
