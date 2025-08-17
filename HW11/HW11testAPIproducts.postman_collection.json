@@ -1,0 +1,66 @@
+{
+	"info": {
+		"_postman_id": "59c07a45-267c-48ce-941a-06e56cb32d27",
+		"name": "HW11testAPIproducts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "47558485",
+		"_collection_link": "https://anastasia301284-1329316.postman.co/workspace/70e32787-2a2a-47d9-b4ff-7abbd9718983/collection/47558485-59c07a45-267c-48ce-941a-06e56cb32d27?action=share&source=collection_link&creator=47558485"
+	},
+	"item": [
+		{
+			"name": "getProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products"
+					]
+				},
+				"description": "### **Получение всех продуктов**\n\n---\n\n### **Метод:**\n\n`GET`\n\n---\n\n### **URL:**\n\n```\nbashKopierenBearbeiten{{baseUrl}}/products\n\n ```\n\n`{{baseUrl}}` — переменная окружения Postman, например: `http://localhost:3000`\n\n---\n\n### **Описание:**\n\nВозвращает массив всех доступных продуктов.\n\nКаждый продукт содержит информацию, например: `id`, `name`, `price`, `description` и т.д. (зависит от структуры массива `products` в коде).\n\n---\n\n### **Параметры запроса:**\n\nОтсутствуют.\n\n---\n\n### **Заголовки:**\n\n| Ключ | Значение | Обязательный |\n| --- | --- | --- |\n| Accept | application/json | Да |\n\n---\n\n### **Пример ответа (200 OK):**\n\n```\njsonKopierenBearbeiten[\n  {\n    \"id\": 1,\n    \"name\": \"Ноутбук\",\n    \"price\": 79999,\n    \"description\": \"Мощный ноутбук для работы и игр\"\n  },\n  {\n    \"id\": 2,\n    \"name\": \"Смартфон\",\n    \"price\": 29999,\n    \"description\": \"Компактный и быстрый смартфон\"\n  }\n]\n\n ```\n\n---\n\n### **Коды ответов:**\n\n| Код | Описание |\n| --- | --- |\n| 200 | Успешно получен список продуктов |\n| 500 | Внутренняя ошибка сервера |\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "getProductsById",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseURL}}/products/2",
+					"host": [
+						"{{baseURL}}"
+					],
+					"path": [
+						"products",
+						"2"
+					]
+				},
+				"description": "### **Получение продукта по ID**\n\n---\n\n### **Метод:**\n\n`GET`\n\n---\n\n### **URL:**\n\n```\nbashKopierenBearbeiten{{baseUrl}}/products/:id\n\n ```\n\n`{{baseUrl}}` — переменная окружения Postman, например: `http://localhost:3000`  \n`:id` — числовой идентификатор продукта.\n\n---\n\n### **Описание:**\n\nВозвращает объект продукта с указанным `id`.\n\nЕсли продукт с таким ID отсутствует — возвращает ошибку `404`.\n\n---\n\n### **Параметры пути (Path Variables):**\n\n| Имя | Тип | Обязательный | Описание |\n| --- | --- | --- | --- |\n| id | int | Да | Уникальный идентификатор продукта |\n\n---\n\n### **Параметры запроса:**\n\nОтсутствуют.\n\n---\n\n### **Заголовки:**\n\n| Ключ | Значение | Обязательный |\n| --- | --- | --- |\n| Accept | application/json | Да |\n\n---\n\n### **Пример запроса:**\n\n```\nbashKopierenBearbeitenGET {{baseUrl}}/products/1\n\n ```\n\n---\n\n### **Пример ответа (200 OK):**\n\n```\njsonKopierenBearbeiten{\n  \"id\": 1,\n  \"name\": \"Ноутбук\",\n  \"price\": 79999,\n  \"description\": \"Мощный ноутбук для работы и игр\"\n}\n\n ```\n\n---\n\n### **Пример ответа (404 Not Found):**\n\n```\njsonKopierenBearbeiten{\n  \"message\": \"Product not found\"\n}\n\n ```\n\n---\n\n### **Коды ответов:**\n\n| Код | Описание |\n| --- | --- |\n| 200 | Продукт найден и возвращён |\n| 404 | Продукт с указанным ID не найден |\n| 500 | Внутренняя ошибка сервера |"
+			},
+			"response": []
+		},
+		{
+			"name": "PostNewProduct",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"description": "### **Создание нового продукта**\n\n---\n\n### **Метод:**\n\n`POST`\n\n---\n\n### **URL:**\n\n```\nbashKopierenBearbeiten{{baseUrl}}/products\n\n ```\n\n`{{baseUrl}}` — переменная окружения Postman, например: `http://localhost:3000`\n\n---\n\n### **Описание:**\n\nСоздаёт новый продукт и добавляет его в список.\n\nID генерируется автоматически на основе длины массива `products`.\n\n---\n\n### **Заголовки:**\n\n| Ключ | Значение | Обязательный |\n| --- | --- | --- |\n| Content-Type | application/json | Да |\n| Accept | application/json | Да |\n\n---\n\n### **Тело запроса (JSON):**\n\n| Поле | Тип | Обязательный | Описание |\n| --- | --- | --- | --- |\n| name | string | Да | Название продукта |\n| price | number | Да | Цена продукта |\n\n**Пример:**\n\n```\njsonKopierenBearbeiten{\n  \"name\": \"Наушники\",\n  \"price\": 4999\n}\n\n ```\n\n---\n\n### **Пример ответа (201 Created):**\n\n```\njsonKopierenBearbeiten{\n  \"id\": 3,\n  \"name\": \"Наушники\",\n  \"price\": 4999\n}\n\n ```\n\n---\n\n### **Коды ответов:**\n\n| Код | Описание |\n| --- | --- |\n| 201 | Продукт успешно создан |\n| 400 | Некорректные данные в запросе |\n| 500 | Внутренняя ошибка сервера |\n\nEndFragment"
+			},
+			"response": []
+		},
+		{
+			"name": "deleteProduct",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"description": "### **Удаление продукта по ID**\n\n### **Метод:**\n\n`DELETE`\n\n---\n\n### **URL:**\n\n```\nbashKopierenBearbeiten{{baseUrl}}/products/:id\n\n ```\n\n> \n\n`{{baseUrl}}` — переменная окружения Postman, например: `http://localhost:3000`  \n`:id` — числовой идентификатор продукта, который нужно удалить.\n\n \n  \n\n---\n\n### **Описание:**\n\nУдаляет продукт с указанным `id` из списка `products`.  \n  \nЕсли продукт не найден, всё равно вернёт `204 No Content` (в текущей реализации).\n\n---\n\n### **Параметры пути (Path Variables):**\n\n| Имя | Тип | Обязательный | Описание |\n| --- | --- | --- | --- |\n| id | int | Да | Уникальный идентификатор продукта |\n\n---\n\n### **Заголовки:**\n\n| Ключ | Значение | Обязательный |\n| --- | --- | --- |\n| Accept | application/json | Нет |\n\n---\n\n### **Пример запроса:**\n\n```\nbashKopierenBearbeitenDELETE {{baseUrl}}/products/2\n\n ```\n\n---\n\n### **Пример ответа (204 No Content):**\n\nБез тела ответа.\n\n---\n\n### **Коды ответов:**\n\n| Код | Описание |\n| --- | --- |\n| 204 | Продукт удалён (или его не было) |\n| 500 | Внутренняя ошибка сервера |"
+			},
+			"response": []
+		}
+	]
+}
