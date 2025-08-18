@@ -55,7 +55,7 @@ app.post('/login', async (req, res) => {
 
     }catch(error) {
         res.status(500).send({message: 'Server Error'});
-        console.error('Server error ', + error.message);
+        console.error('Server error:', error.message);
     }
     
 });
@@ -88,7 +88,7 @@ app.delete('/delete-account', auth, (req, res) => {
         return res.status(404).json({ message: 'User not found' });
     }
 
-    users.filter(user => user.id !== userId);
+    users = users.filter(user => user.id !== userId);
     
 
     res.json({ message: 'Account deleted successfully' });
