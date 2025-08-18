@@ -1,0 +1,25 @@
+[2025-08-18 20:30:03] Error: Test error for log
+    at Server.<anonymous> (file:///C:/Users/anast/Desktop/node.js/NodeJS_HW/HW5/Task2/logger.js:12:11)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1153:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+[2025-08-18 20:30:03] Error: Test error for log
+    at Server.<anonymous> (file:///C:/Users/anast/Desktop/node.js/NodeJS_HW/HW5/Task2/logger.js:12:11)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1153:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+[2025-08-18 20:30:04] Error: Test error for log
+    at Server.<anonymous> (file:///C:/Users/anast/Desktop/node.js/NodeJS_HW/HW5/Task2/logger.js:12:11)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1153:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+[2025-08-18 20:30:25] Error: Test error for log
+    at Server.<anonymous> (file:///C:/Users/anast/Desktop/node.js/NodeJS_HW/HW5/Task2/logger.js:12:11)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1153:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
+[2025-08-18 20:30:25] Error: Test error for log
+    at Server.<anonymous> (file:///C:/Users/anast/Desktop/node.js/NodeJS_HW/HW5/Task2/logger.js:12:11)
+    at Server.emit (node:events:518:28)
+    at parserOnIncoming (node:_http_server:1153:12)
+    at HTTPParser.parserOnHeadersComplete (node:_http_common:117:17)
