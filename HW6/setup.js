@@ -14,5 +14,4 @@ db.query(createTable, (err) => {
   } else {
     console.log('Table "products" has been created or already exists');
   }
-  db.end();
 });
